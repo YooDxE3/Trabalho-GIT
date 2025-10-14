@@ -1,0 +1,17 @@
+name: Mostrar usuario
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  usuario:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Usuario checkout
+       uses: actions/checkout@v4
+
+     - name: Get Usuario
+       run: actor
