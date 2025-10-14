@@ -1,0 +1,17 @@
+name: Mostrar data e hora PUSH
+
+on:
+  push:
+    branches:
+      -  main
+
+jobs:
+  hour-date:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Date checkout
+        uses: actions/checkout@v4
+
+      - name: Get Data e Hora
+        run: date
