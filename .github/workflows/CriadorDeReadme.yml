@@ -1,0 +1,17 @@
+name: Criar e Preencher arquivo Readme.md
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  arquivo-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Readme Checkout
+        uses: actions/checkout@v4
+
+      - name: Criar e preencher Readme
+        run: echo "# Gerando Readme.md automaticamente" > readme.md
