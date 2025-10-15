@@ -6,7 +6,7 @@ on:
       -  main
 
 jobs:
-  somar-2+2:
+  somar-dois:
     runs-on: ubuntu-latest
 
     steps:
