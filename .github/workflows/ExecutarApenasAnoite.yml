@@ -1,0 +1,24 @@
+name: Apenas de noite
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+      
+jobs:
+  apenas-anoite:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Noite checkout
+        uses: actions/checkout@v4
+
+      - name: Executar de noite
+        run: |
+          HORA=$(TZ="America/Sao_Paulo" date +%H)
+          if [ HORA -ge 22 ] || [ HORA -lt 5 ]; then
+            echo "Executando pois agora é noite"
+          else
+            echo "Agora não é noite, encerrando"
+            exit 0
+          fi
