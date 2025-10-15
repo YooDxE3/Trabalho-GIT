@@ -1,0 +1,17 @@
+name: Listar Arquivos
+
+on:
+  push:
+    branches:
+      -  main
+
+jobs:
+  listar-arquivos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Arquivos Checkout
+        uses: actions/checkout@v4
+
+      - name: Arquivos Listados
+        run: ls -la
