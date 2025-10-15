@@ -19,10 +19,10 @@ jobs:
       - name: Criar e preencher README.md
         run: |
           echo "# Gerando Readme.md automaticamente" > README.md
-          echo "" > README.md
-          echo "# Trabalho de GitHub Actions" > README.md
-          echo "## André Luiz de Oliveira Zampieri RA: 14623" > README.md
-          echo "## Hendreu Satoshi Zampieri Itami RA: 240061" > README.md
+          echo "" >> README.md
+          echo "# Trabalho de GitHub Actions" >> README.md
+          echo "## André Luiz de Oliveira Zampieri RA: 14623" >> README.md
+          echo "## Hendreu Satoshi Zampieri Itami RA: 240061" >> README.md
           
       - name: Commitar e enviar o Readme
         env:
