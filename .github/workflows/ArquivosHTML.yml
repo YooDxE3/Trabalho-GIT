@@ -1,0 +1,17 @@
+name: Contar arquivos HTML
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  arquivos-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: HTML Checkout
+        uses: actions/checkout@v4
+
+      - name: Arquivos HTML
+        run: ls | grep '\.html$' | wc -l
