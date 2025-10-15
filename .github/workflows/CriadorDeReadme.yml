@@ -19,10 +19,7 @@ jobs:
       - name: Criar e preencher README.md
         run: |
           echo "# Gerando Readme.md automaticamente" > README.md
-          echo "" >> README.md
-          echo "Arquivo criado em: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> README.md
-          echo "Usuário do push: ${{ github.actor }}" >> README.md
-
+          
       - name: Commitar e enviar o Readme
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
