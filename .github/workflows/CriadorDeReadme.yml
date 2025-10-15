@@ -1,5 +1,8 @@
 name: Criar e Preencher arquivo Readme.md
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -10,16 +13,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Readme Checkout
+      - name: Checkout do repositório
         uses: actions/checkout@v4
 
-      - name: Criar e preencher Readme
-        run: echo "# Gerando Readme.md automaticamente" > readme.md
-
-      - name: Commitar o Readme
+      - name: Criar e preencher README.md
         run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add readme.md
-            git commit -m "Atualizando README.md automaticamente" || echo "Nenhuma mudança para commitar"
-            git push
+          echo "# Gerando Readme.md automaticamente" > README.md
+          echo "" >> README.md
+          echo "Arquivo criado em: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> README.md
+          echo "Usuário do push: ${{ github.actor }}" >> README.md
+
+      - name: Commitar e enviar o Readme
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Atualizando README.md automaticamente" || echo "Nenhuma mudança para commitar"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
