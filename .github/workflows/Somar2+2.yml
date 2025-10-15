@@ -1,0 +1,19 @@
+name: somar 2 + 2
+
+on:
+  push:
+    branches:
+      -  main
+
+jobs:
+  somar-2+2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Somar 2 + 2
+        uses: actions/checkout@v4
+
+      - name: Fazer Soma
+        run: |
+             Resultado=$(( 2 + 2 ))
+             echo "2 + 2 = $Resultado"
