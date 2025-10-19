@@ -1,0 +1,26 @@
+name: Ver arquivo com mais de 100kb
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  arquivos-grandes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name:  Checkout de arquivos
+        uses:  actions/checkout@v4
+
+      - name:  Verificar arquivos com mais de 100kb
+        run:  |
+              echo "Verificando arquivos maiores que 100KB"
+              GRANDES=$(find . -type f -size +100k)
+              if [ -n "$GRANDES" ]; then
+                echo "Arquivos grandes encontrados:"
+                echo "$GRANDES"
+                exit 1
+              else
+                echo "Nenhum arquivo maior que 100KB encontrado."
+              fi
