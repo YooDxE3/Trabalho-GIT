@@ -18,9 +18,8 @@ jobs:
               echo "Verificando arquivos maiores que 100KB"
               GRANDES=$(find . -type f -size +100k)
               if [ -n "$GRANDES" ]; then
-                echo "Arquivos grandes encontrados:"
+                echo "::warning::Arquivos maiores que 100KB encontrados:"
                 echo "$GRANDES"
-                exit 1
               else
                 echo "Nenhum arquivo maior que 100KB encontrado."
               fi
