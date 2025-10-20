@@ -1,0 +1,20 @@
+name: Contar arquivos meia noite
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  contar-arquivos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Arquivos checkout
+        uses: actions/checkout@v4
+
+      - name: Quantidade de arquivos
+        run: |
+            TZ="America/Sao_Paulo"
+            echo "Arquivos do dia: $(date -u)"
+            TOTAL=$(find . -type f | wc -l)
+            echo "Total de arquivos: $TOTAL"
