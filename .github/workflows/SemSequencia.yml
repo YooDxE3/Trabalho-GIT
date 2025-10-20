@@ -1,0 +1,32 @@
+name: Steps sem sequencia
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  info-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Steps Sem Sequencia checkout
+        uses: actions/checkout@v4
+
+      - name: Exibir todas informações
+        run: |
+            echo "Exibir data"
+            TZ="America/Sao_Paulo" date +"%Y-%m-%d"
+            echo " "
+            echo "Exibir Usuario"
+            AUTHOR=$(git log -1 --pretty=format:%an)
+            echo "O autor do commit é: $AUTHOR"
+            echo " "
+            echo "Arquivos HTML"
+            ls | grep '\.html$' | wc -l
+            echo " "
+            echo "Arquivos CSS"
+            ls | grep '\.css$' | wc -l
+            echo " "
+            echo "Arquivos JS"
+            ls | grep '\.js$' | wc -l
