@@ -17,7 +17,7 @@ jobs:
         run: |
           export TZ="America/Sao_Paulo"
           HORA=$(date +%H)
-          if [ $HORA -ge 22 ] || [ $HORA -lt 5 ]; then
+          if [ $HORA -ge 21 ] || [ $HORA -lt 5 ]; then
             echo "Executando pois agora é noite"
           else
             echo "Agora não é noite, encerrando"
